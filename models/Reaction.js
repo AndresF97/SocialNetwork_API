@@ -1,4 +1,4 @@
-const {Schema, Types} = require('mogoose');
+const {Schema, Types} = require('mongoose');
 const dayjs = require('dayjs')
 
 const reactionsSchema = new Schema (

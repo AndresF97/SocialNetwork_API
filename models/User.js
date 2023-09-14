@@ -1,4 +1,4 @@
-const {Schema, model} = require("moongose");
+const {Schema, model} = require("mongoose");
 
 const userSchema = new Schema(
     {
@@ -33,7 +33,7 @@ const userSchema = new Schema(
     }
 );
 
-userSchema.virtula('friendCount').get(()=>{
+userSchema.virtual('friendCount').get(()=>{
     return this.friends.length
 })
 
