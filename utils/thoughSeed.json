@@ -1,2 +1,26 @@
-
-  
+[
+    {
+        "thoughText":"Im Sal I like programing",
+        "username":"Sal"
+    },
+    {
+        "thoughText":"Im Lernantino and I also like programming",
+        "username":"Lernantino"
+    },
+    {
+        "thoughText":"Im Amiko and also like programming cuz its awesome",
+        "username":"Amiko"
+    },
+    {
+        "thoughText":"Im Saul goodman, do you know you have rights",
+        "username":"Saul"
+    },
+    {
+        "thoughText":"Im hoping to return to the boxing ring soon",
+        "username":"Ippo"
+    },
+    {
+        "thoughText":"I'M GOING TO CONQUER THREE MORE WEIGHT CLASSES",
+        "username":"Takamura"
+    }
+]
