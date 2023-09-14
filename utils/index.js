@@ -7,9 +7,8 @@ const userSeeds= require('./userSeed.json');
 
 connection.on('error', (err)=> err)
 connection.once('open', async()=>{
-    // let thoughsMade = [];
-    Thoughs.collection.drop()
-    User.collection.drop()
+    await Thoughs.collection.drop()
+    await User.collection.drop()
     await Thoughs.collection.insertMany(thoughSeeds)
     let userIndex = 0
     for(var i = 0; i < thoughSeeds.length;i++){

@@ -12,7 +12,7 @@ const thoughSchema = new Schema(
         },
         createdAt:{
             type: Date,
-            default:dayjs().format()
+            default:()=>{dayjs().format()}
         },
         username:{
             type:String,
