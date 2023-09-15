@@ -19,6 +19,41 @@ module.exports = {
         }catch(err){
             res.status(500).json(err)
         }
+    },
+    async createUser(req,res){
+        try{
+
+        }catch(err){
+
+        }
+    },
+    async updateUser(req,res){
+        try{
+
+        }catch(err){
+
+        }
+    },
+    async deleteUser(req,res){
+        try{
+
+        }catch(err){
+
+        }
+    },
+    async createFriend(req,res){
+        try{
+
+        }catch(err){
+
+        }
+    },
+    async deleteFriend(){
+        try{
+
+        }catch(err){
+
+        }
     }
     
 }

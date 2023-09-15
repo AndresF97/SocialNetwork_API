@@ -19,5 +19,40 @@ module.exports = {
         }catch(err){
             res.status(500).json(err)
         }
+    },
+    async createThough(req, res){
+        try{
+
+        }catch(err){
+
+        }
+    },
+    async updateThough(req,res){
+        try{
+
+        }catch(err){
+
+        }
+    },
+    async deleteThough(req,res){
+        try{
+
+        }catch(err){
+
+        }
+    },
+    async createReaction(req,res){
+        try{
+
+        }catch(err){
+
+        }
+    },
+    async deleteReaction(req,res){
+        try{
+
+        }catch(err){
+
+        }
     }
 }
