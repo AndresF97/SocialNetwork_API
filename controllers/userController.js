@@ -34,13 +34,14 @@ module.exports = {
     async updateUser(req,res){
         try{
             const upadtedUser = await User.findOneAndUpdate(
-                {_id:req.params.thoughId},
-                {$set:req.body}
+                {_id:req.params.userId},
+                {$set:req.body},
+                { runValidators: true, new: true }
             )
             if(!upadtedUser){
-                return res.status(200).json({messgae:"User failed to updated!"})
+                return res.status(404).json({messgae:"User failed to updated!"})
             }
-            res.josn({message:"User was updated!"})
+            res.json({message:"User was updated!"})
         }catch(err){
             res.status(500).json(err)
         }
