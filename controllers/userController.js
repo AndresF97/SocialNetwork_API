@@ -22,16 +22,27 @@ module.exports = {
     },
     async createUser(req,res){
         try{
-
+            const newUser = await User.create(req.body);
+            if(!newUser){
+                return res.status(404).json({message:"Somthing went wrong, user was not created"})
+            }
+            res.json(newUser)
         }catch(err){
-
+            return res.status(500).json(err)
         }
     },
     async updateUser(req,res){
         try{
-
+            const upadtedUser = await User.findOneAndUpdate(
+                {_id:req.params.thoughId},
+                {$set:req.body}
+            )
+            if(!upadtedUser){
+                return res.status(200).json({messgae:"User failed to updated!"})
+            }
+            res.josn({message:"User was updated!"})
         }catch(err){
-
+            res.status(500).json(err)
         }
     },
     async deleteUser(req,res){
