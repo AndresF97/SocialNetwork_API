@@ -39,7 +39,7 @@ module.exports = {
     async updateThough(req,res){
         try{
             const updatedThough = await Thoughs.findByIdAndUpdate(
-                {_id:req.params.userId},
+                {_id:req.params.thoughId},
                 {$set:req.body}
             );
             if(!updatedThough){
