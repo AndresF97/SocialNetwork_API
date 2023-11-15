@@ -48,23 +48,46 @@ module.exports = {
     },
     async deleteUser(req,res){
         try{
-
+            const userToDelete = await User.findOneAndDelete(
+                {_id:req.params.userId}
+            )
+            if(!userToDelete){
+                return res.status(404).json({message:"Couldn't delete user!"})
+            }
+            await Thoughs.deleteMany({_id:{$in:userToDelete.thoughs}})
+            res.json({message:"User deleted and thoughs"})
         }catch(err){
-
+            res.status(404).json(err);
         }
     },
     async createFriend(req,res){
         try{
-
+            const userToGiveAFriend = await User.findOneAndUpdate(
+                {_id:req.params.userId},
+                {$addToSet:{friends:req.params.friendId}},
+                {new:true}
+            )
+            if(!userToGiveAFriend){
+                return res.status(404).json({message:"Couldn't add new friend to user"})
+            }
+            res.status(200).json(userToGiveAFriend)
         }catch(err){
-
+            res.status(500).json(err)
         }
     },
     async deleteFriend(){
         try{
-
+            const friendToDelete = await User.findOneAndUpdate(
+                {_id:req.params.userId},
+                {$pull:{friends:req.params.friendId}},
+                {new:true}
+            )
+            if(!friendToDelete){
+                return res.status(404).json({message:"Couldn't delete friend from user!"})
+            }
+            res.status(200).json(friendToDelete)
         }catch(err){
-
+            return res.status(500).json(err)
         }
     }
     
