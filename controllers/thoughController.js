@@ -48,28 +48,50 @@ module.exports = {
 
             res.json({message:"updated though!"})
         }catch(err){
-
+            res.status(500).json(err)
         }
     },
     async deleteThough(req,res){
         try{
-
+            const thoughToDelete = await Thoughs.findOneAndDelete(
+                {_id:req.params.thoughId}
+            )
+            if(!thoughToDelete){
+                return res.status(404).json({message:"Didn't find though to delete"})
+            }
+            return res.status(200).json(thoughToDelete)
         }catch(err){
-
+            return res.json(err)
         }
     },
     async createReaction(req,res){
         try{
-
+            const thoughToAddReaction = await Thoughs.findOneAndUpdate(
+                {_id:req.params.thoughId},
+                {$addToSet:{reactions:req.body}},
+                {new:true}
+            )
+            if(!thoughToAddReaction){
+                return re.status(404).req.json({message:"Couldnt find though with that Id"});
+            }
+            res.status(200).json(thoughToAddReaction)
         }catch(err){
-
+            res.status(500).json(err)
         }
     },
     async deleteReaction(req,res){
         try{
-
+            const thoughToDeleteReaction = await Thoughs.findByIdAndDelete(
+                {_id:req.params.id},
+                {$pull:{reactions:req.params.reactionId}},
+                {new:true}
+            )
+            if(!thoughToDeleteReaction){
+                return res.status(404).json({message:"Couldnt find a reaction or a though with that Id"})
+            }
+            res.json(thoughToDeleteReaction)
         }catch(err){
-
+            res.status(500).json(err)
         }
     }
 }
