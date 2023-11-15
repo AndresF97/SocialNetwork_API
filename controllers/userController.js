@@ -4,7 +4,7 @@ const {User, Thoughs} = require('../models')
 module.exports = {
     async getAllUser (req, res){
         try{
-            const users = await User.find().populate('thoughs')
+            const users = await User.find().populate('thoughs').populate('friends')
             res.status(200).json(users)
         }catch(err){
             res.status(500).json(err)
@@ -66,7 +66,7 @@ module.exports = {
                 {_id:req.params.userId},
                 {$addToSet:{friends:req.params.friendId}},
                 {new:true}
-            )
+            ).populate('thoughs').populate('friends')
             if(!userToGiveAFriend){
                 return res.status(404).json({message:"Couldn't add new friend to user"})
             }
@@ -75,7 +75,7 @@ module.exports = {
             res.status(500).json(err)
         }
     },
-    async deleteFriend(){
+    async deleteFriend(req,res){
         try{
             const friendToDelete = await User.findOneAndUpdate(
                 {_id:req.params.userId},
