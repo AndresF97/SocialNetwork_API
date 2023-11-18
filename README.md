@@ -30,7 +30,7 @@ npm run seeds
 ```
 npm start
 ```
-3. Open your favorite API-testing tool to and hit the specific routes show in the gif below. 
+3. Open your favorite API-testing tool to and hit the specific routes show in the gif below.
 
 ## Authors 
 
