@@ -1,6 +1,7 @@
 const {Schema, model} = require('mongoose');
 const dayjs = require('dayjs')
 const Reaction = require("./Reaction")
+const Likes  = require('./Likes')
 
 const thoughSchema = new Schema(
     {
@@ -18,7 +19,8 @@ const thoughSchema = new Schema(
             type:String,
             require:true
         },
-        reactions:[Reaction]
+        reactions:[Reaction],
+        likes:[Likes]
     },{
         toJSON:{
             virtuals:true
