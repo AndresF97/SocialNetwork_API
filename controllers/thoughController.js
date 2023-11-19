@@ -1,4 +1,5 @@
 const {User, Thoughs} = require('../models')
+const { rawListeners } = require('../models/User')
 
 
 module.exports = {
@@ -97,8 +98,14 @@ module.exports = {
     async likeThough(req,res){
         try{
             const likeToSpecificThough = await Thoughs.findOneAndUpdate(
-                
+                {_id:req.params.thoughId},
+                {$addToSet:{likes:req.body}},
+                {new:true}
             )
+            if(!likeToSpecificThough){
+                res.status(404).json({messag:'NO though with that Id!'})
+            }
+            res.json(likeToSpecificThough)
         }catch(err){
             res.status(500).json(err)
         }

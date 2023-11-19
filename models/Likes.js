@@ -8,7 +8,8 @@ const likesSchema = new Schema(
         default: () => new Types.ObjectId()
         },
         username:{
-            type:String
+            type:String,
+            unique:true
         }
     },{
         toJSON:{
