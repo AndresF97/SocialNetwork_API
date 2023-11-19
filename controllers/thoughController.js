@@ -84,7 +84,7 @@ module.exports = {
         try{
             const thoughToDeleteReaction = await Thoughs.findOneAndUpdate(
                 {_id:req.params.thoughId},
-                {$pull:{reactions:req.params.reactionId}},
+                {$pull:{reactions:{reactionId:req.params.reactionId}}},
                 {new:true}
             )
             if(!thoughToDeleteReaction){
@@ -115,7 +115,7 @@ module.exports = {
         try{
             const thoughToUnlike = await Thoughs.findOneAndUpdate(
                 {_id:req.params.thoughId},
-                {$pull:{likes:req.params.likeId}},
+                {$pull:{likes:{likeId:req.params.likeId}}},
                 {new:true}
             )
             if(!thoughToUnlike){
