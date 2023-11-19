@@ -104,6 +104,7 @@ module.exports = {
             )
             if(!likeToSpecificThough){
                 res.status(404).json({messag:'NO though with that Id!'})
+                return 
             }
             res.json(likeToSpecificThough)
         }catch(err){
