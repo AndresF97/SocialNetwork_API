@@ -93,5 +93,15 @@ module.exports = {
         }catch(err){
             res.status(500).json(err)
         }
+    },
+    async likeThough(req,res){
+        try{
+            const likeToSpecificThough = await Thoughs.findOneAndUpdate(
+                
+            )
+        }catch(err){
+            res.status(500).json(err)
+        }
+
     }
 }
