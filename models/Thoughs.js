@@ -29,9 +29,12 @@ const thoughSchema = new Schema(
     }
 );
 
-// thoughSchema.virtual('reactionCount').get(()=>{
-//     return this.reactions.length
-// })
+thoughSchema.virtual('reactionCount').get(function(){
+    return this.reactions.length
+})
+thoughSchema.virtual('likeCount').get(function(){
+    return this.likes.length
+})
 
 const Thoughs = model('Thoughs', thoughSchema)
 

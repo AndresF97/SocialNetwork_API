@@ -1,14 +1,15 @@
 const {User, Thoughs} = require('../models')
+const { rawListeners } = require('../models/User')
 
 
 module.exports = {
     async getAllThoughs(req,res){
-        try{
+        // try{
             const allThoughs = await Thoughs.find()
             res.status(200).json(allThoughs)
-        }catch(err){
-            res.status(500).json(err)
-        }
+        // }catch(err){
+        //     res.status(500).json(err)
+        // }
     },
     async getSingleThough(req,res){
         try{
@@ -93,5 +94,21 @@ module.exports = {
         }catch(err){
             res.status(500).json(err)
         }
+    },
+    async likeThough(req,res){
+        try{
+            const likeToSpecificThough = await Thoughs.findOneAndUpdate(
+                {_id:req.params.thoughId},
+                {$addToSet:{likes:req.body}},
+                {new:true}
+            )
+            if(!likeToSpecificThough){
+                res.status(404).json({messag:'NO though with that Id!'})
+            }
+            res.json(likeToSpecificThough)
+        }catch(err){
+            res.status(500).json(err)
+        }
+
     }
 }

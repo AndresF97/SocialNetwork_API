@@ -2,16 +2,14 @@ const {Schema, Types} = require("mongoose")
 
 
 const likesSchema = new Schema(
-    {   likeId:{
+    {   
+        likeId:{
         type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId()
         },
-        likes:{
-            type:Number,
-            default:0
-        },
         username:{
-            type:String
+            type:String,
+            unique:true
         }
     },{
         toJSON:{
