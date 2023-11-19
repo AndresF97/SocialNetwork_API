@@ -3,12 +3,12 @@ const {User, Thoughs} = require('../models')
 
 module.exports = {
     async getAllThoughs(req,res){
-        try{
+        // try{
             const allThoughs = await Thoughs.find()
             res.status(200).json(allThoughs)
-        }catch(err){
-            res.status(500).json(err)
-        }
+        // }catch(err){
+        //     res.status(500).json(err)
+        // }
     },
     async getSingleThough(req,res){
         try{
