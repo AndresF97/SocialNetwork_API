@@ -110,6 +110,22 @@ module.exports = {
         }catch(err){
             res.status(500).json(err)
         }
+    },
+    async unlikeThough(req,res){
+        try{
+            const thoughToUnlike = await Thoughs.findOneAndUpdate(
+                {_id:req.params.thoughId},
+                {$pull:{likes:req.params.likeId}},
+                {new:true}
+            )
+            if(!thoughToUnlike){
+                res.status(404).json({message:"No though or like was found with that Id!"})
+                return 
+            }
+            res.status(200).json({message:"Though unliked!"})
 
+        }catch(err){
+            res.status(500).json(err)
+        }
     }
 }
